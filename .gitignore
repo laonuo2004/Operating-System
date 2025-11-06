@@ -1,5 +1,6 @@
 .cursorindexingignore
 .specstory
+**/*.zip
 
 # MS Office
 ~$*
