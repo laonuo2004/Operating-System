@@ -1,3 +1,5 @@
+#pragma comment(lib, "psapi.lib")
+
 #include <windows.h>
 #include <psapi.h>
 #include <iostream>
@@ -99,8 +101,12 @@ void PrintWorkingSet(HANDLE process) {
 
 int main() {
     DWORD pid;
-    std::cout << "Enter PID: ";
+    std::cout << "Enter PID (0 for current process): ";
     std::cin >> pid;
+
+    if (pid == 0) {
+        pid = GetCurrentProcessId();
+    }
 
     HANDLE process = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, pid);
     if (!process) {
