@@ -114,16 +114,11 @@ int main() {
         return 1;
     }
 
-    while (true) {
-        system("cls");
-        std::cout << "Process PID " << pid << "\n\n";
-        PrintSystemInfo();
-        auto regions = EnumerateRegions(process);
-        PrintWorkingSet(process);
-        PrintRegions(regions);
-
-        Sleep(1500);
-    }
+    std::cout << "\n\nProcess PID " << pid << "\n\n";
+    PrintSystemInfo();
+    auto regions = EnumerateRegions(process);
+    PrintWorkingSet(process);
+    PrintRegions(regions);
 
     CloseHandle(process);
     return 0;
